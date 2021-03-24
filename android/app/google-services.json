@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "212983853174",
+    "firebase_url": "https://kiosco-app.firebaseio.com",
+    "project_id": "kiosco-app",
+    "storage_bucket": "kiosco-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:212983853174:android:b2e170615a4af4fdfbef57",
+        "android_client_info": {
+          "package_name": "com.example.kiosco_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "212983853174-decp5286gsapn6p7m3440cvltuu2bjef.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kiosco_app",
+            "certificate_hash": "b3ea9936249181e19abe0eed35e45605b945cdce"
+          }
+        },
+        {
+          "client_id": "212983853174-qm9qnepji4cr0j0ep3am95s63pk2lts3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCZjJy3esxbDH9046lDkdSmt-baLDB9zQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "212983853174-qm9qnepji4cr0j0ep3am95s63pk2lts3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
