@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kiosco_app/models/args_model.dart';
+import 'package:kiosco_app/providers/firebaseauth_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -294,10 +296,15 @@ class HiddenDrawerMenuWidget extends StatelessWidget {
                 color: Colors.white.withOpacity(0.6),
               ),
               SizedBox(width: 10),
-              Text(
-                'Cerrar Sesion',
-                style: TextStyle(
-                  color: Colors.white.withOpacity(0.6),
+              ElevatedButton(
+                onPressed: () {
+                  context.read<FirebaseAuthProvider>().signOut();
+                },
+                child: Text(
+                  'Cerrar Sesion',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.6),
+                  ),
                 ),
               )
             ],
