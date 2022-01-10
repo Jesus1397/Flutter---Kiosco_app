@@ -13,21 +13,26 @@ class FirebaseAuthProvider {
         email: email,
         password: password,
       );
-      return "Sesion inisiada";
+      return "Ok";
     } on FirebaseAuthException catch (e) {
       return e.message;
     }
   }
 
-  Future<String> signUp({String email, String password}) async {
+  Future signUp({String email, String password}) async {
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-      return "Usuario registrado";
     } on FirebaseAuthException catch (e) {
-      return e.message;
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      }
+    } catch (e) {
+      print(e);
     }
   }
 

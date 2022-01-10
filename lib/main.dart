@@ -3,24 +3,24 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:kiosco_app/pages/editproduct_page.dart';
 import 'package:kiosco_app/providers/firebaseauth_provider.dart';
 import 'package:kiosco_app/pages/addproduct_page.dart';
 import 'package:kiosco_app/pages/home_page.dart';
-import 'package:kiosco_app/pages/login_page.dart';
 import 'package:kiosco_app/pages/products_page.dart';
-import 'package:kiosco_app/pages/register_page.dart';
 
 import 'package:kiosco_app/providers/theme_provider.dart';
+import 'package:kiosco_app/utils/color_palet.dart';
 
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.dark,
-      systemNavigationBarIconBrightness: Brightness.dark,
-      statusBarBrightness: Brightness.dark,
+      statusBarColor: CustomColorDark.bgColor,
+      statusBarIconBrightness: Brightness.light,
+      systemNavigationBarIconBrightness: Brightness.light,
+      statusBarBrightness: Brightness.light,
     ),
   );
 
@@ -32,8 +32,10 @@ Future<void> main() async {
       providers: [
         ChangeNotifierProvider<ThemeChangeProvider>(
           create: (_) => ThemeChangeProvider(
-            ThemeData.light().copyWith(
-              scaffoldBackgroundColor: Color(0xff142850),
+            ThemeData.dark().copyWith(
+              brightness: Brightness.dark,
+              primaryColor: Colors.lightBlue[800],
+              accentColor: Colors.cyan[600],
             ),
           ),
         ),
@@ -58,28 +60,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: themeProvider.getTheme,
-      initialRoute: 'auth',
+      initialRoute: 'home',
       routes: {
         'home': (_) => HomePage(),
         'products': (_) => ProductsPage(),
         'addProduct': (_) => AddProductPage(),
-        'login': (_) => LogInPage(),
-        'register': (_) => RegisterPage(),
-        'auth': (_) => AuthWrapper(),
+        'editProduct': (_) => EditProductPage(),
       },
     );
-  }
-}
-
-class AuthWrapper extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User>();
-
-    if (firebaseUser != null) {
-      return HomePage();
-    }
-
-    return LogInPage();
   }
 }
